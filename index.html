@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meharry GRFP Help — School of Applied Computational Sciences</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:     #012169;
+  --navy-dk:  #001040;
+  --navy-md:  #1B3A8C;
+  --navy-sf:  #E8EDF7;
+  --gold:     #C49A06;
+  --gold-lt:  #E8B800;
+  --gold-pl:  #FBF5DC;
+  --gold-bd:  #E0C870;
+  --white:    #FFFFFF;
+  --fog:      #F7F8FC;
+  --text:     #111827;
+  --text-m:   #374151;
+  --text-s:   #6B7280;
+  --border:   #D1D9EC;
+  --grn:      #0D6E4A;
+  --grn-bg:   #ECFDF5;
+  --grn-bd:   #6EE7B7;
+  --red-bg:   #FFF1F2;
+  --red-bd:   #FECDD3;
+  --red-tx:   #881337;
+  --teal:     #0E7490;
+  --teal-bg:  #F0FDFA;
+  --teal-bd:  #99F6E4;
+  --r:  4px;
+  --rm: 8px;
+  --sh: 0 1px 3px rgba(1,33,105,.08), 0 4px 12px rgba(1,33,105,.06);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;font-size:16px;line-height:1.65;color:var(--text);background:var(--white)}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:var(--navy-dk);border-bottom:2px solid var(--gold)}
+.nav-in{max-width:1120px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:54px}
+.nav-brand{display:flex;align-items:center;gap:.65rem;text-decoration:none}
+.nav-m{width:32px;height:32px;background:var(--gold);color:var(--navy-dk);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:800;font-size:1rem;border-radius:2px;flex-shrink:0}
+.nav-lbl{color:var(--white);font-size:.82rem;font-weight:600;line-height:1.3}
+.nav-sub{color:rgba(255,255,255,.4);font-size:.68rem}
+.nav-links{display:flex;gap:0;list-style:none}
+.nav-links a{color:rgba(255,255,255,.62);text-decoration:none;font-size:.78rem;font-weight:500;padding:.28rem .55rem;border-radius:var(--r);transition:color .12s,background .12s}
+.nav-links a:hover{color:var(--gold-lt);background:rgba(255,255,255,.07)}
+
+/* DEADLINE ALERT BANNER */
+.dl-banner{background:var(--gold);padding:.5rem 1.5rem;text-align:center}
+.dl-banner-in{max-width:1120px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:1.5rem;flex-wrap:wrap}
+.dl-banner span{font-size:.8rem;font-weight:600;color:var(--navy-dk)}
+.dl-banner a{color:var(--navy-dk);font-weight:700;text-decoration:underline}
+.dl-pill{display:inline-flex;align-items:center;gap:.35rem;background:rgba(0,16,64,.12);padding:.18rem .6rem;border-radius:99px;font-size:.75rem;font-weight:700;color:var(--navy-dk)}
+
+/* HERO */
+.hero{background:var(--navy-dk);padding:4.5rem 1.5rem 4rem;position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 15%,rgba(196,154,6,.14) 0%,transparent 55%),radial-gradient(ellipse at 20% 85%,rgba(1,33,105,.25) 0%,transparent 60%);pointer-events:none}
+.hero::before{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.hero-in{max-width:1120px;margin:0 auto;position:relative;z-index:1;display:grid;grid-template-columns:1fr auto;gap:3rem;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:.4rem;background:rgba(196,154,6,.16);border:1px solid rgba(196,154,6,.32);color:var(--gold-lt);font-size:.72rem;font-weight:600;letter-spacing:.06em;padding:.28rem .75rem;border-radius:99px;margin-bottom:1.4rem}
+.hero h1{font-family:'Playfair Display',serif;font-weight:800;font-size:clamp(2rem,4.5vw,3rem);color:var(--white);line-height:1.15;margin-bottom:1rem}
+.hero h1 em{font-style:normal;color:var(--gold-lt)}
+.hero-lead{font-size:1rem;color:rgba(255,255,255,.68);max-width:520px;margin-bottom:2rem;line-height:1.75}
+.hero-stats{display:flex;gap:1.75rem;margin-bottom:2rem;flex-wrap:wrap;align-items:flex-start}
+.s-num{font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:700;color:var(--gold-lt);line-height:1}
+.s-lbl{font-size:.73rem;color:rgba(255,255,255,.48);margin-top:.2rem}
+.s-div{width:1px;background:rgba(255,255,255,.14);align-self:stretch}
+.ctas{display:flex;gap:.65rem;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:.35rem;padding:.58rem 1.1rem;border-radius:var(--r);font-size:.86rem;font-weight:600;text-decoration:none;border:none;cursor:pointer;transition:all .13s}
+.btn-gold{background:var(--gold);color:var(--navy-dk)}.btn-gold:hover{background:var(--gold-lt)}
+.btn-ghost{background:transparent;border:1.5px solid rgba(255,255,255,.26);color:var(--white)}.btn-ghost:hover{border-color:var(--gold);color:var(--gold-lt)}
+/* Hero deadline widget */
+.hero-dl{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:var(--rm);padding:1.25rem 1.5rem;min-width:260px;flex-shrink:0}
+.hero-dl h4{font-size:.7rem;font-weight:700;color:var(--gold-lt);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.85rem}
+.dl-row{display:flex;justify-content:space-between;align-items:center;padding:.38rem 0;border-bottom:1px solid rgba(255,255,255,.08)}
+.dl-row:last-child{border-bottom:none}
+.dl-field{font-size:.78rem;color:rgba(255,255,255,.68);line-height:1.35}
+.dl-date{font-size:.78rem;font-weight:700;color:var(--white);text-align:right;white-space:nowrap;margin-left:.75rem}
+.dl-warn{margin-top:.85rem;padding:.5rem .65rem;background:rgba(196,154,6,.18);border-radius:var(--r);font-size:.72rem;color:rgba(255,255,255,.75);line-height:1.5}
+
+/* SHARED */
+section{padding:4rem 1.5rem}
+.wrap{max-width:1120px;margin:0 auto}
+.lbl{font-size:.7rem;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.5rem}
+.sh{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(1.45rem,2.8vw,1.95rem);color:var(--navy);line-height:1.25;margin-bottom:.65rem}
+.sub{font-size:.95rem;color:var(--text-m);max-width:620px;line-height:1.75;margin-bottom:2.25rem}
+.bg-fog{background:var(--fog)}
+.bg-navy{background:var(--navy-dk)}
+.bg-navy .sh{color:var(--white)}
+.bg-navy .sub{color:rgba(255,255,255,.62)}
+.bg-navy .lbl{color:var(--gold-lt)}
+
+/* OVERVIEW CARDS */
+.ov-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.ov-card{background:var(--white);border:1px solid var(--border);border-radius:var(--rm);padding:1.35rem;box-shadow:var(--sh)}
+.ov-num{font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:700;color:var(--navy);line-height:1}
+.ov-unit{font-size:.88rem;font-weight:600;color:var(--navy-md)}
+.ov-desc{font-size:.825rem;color:var(--text-s);margin-top:.45rem;line-height:1.5}
+.ov-intro p{font-size:.95rem;color:var(--text-m);line-height:1.8;margin-bottom:1.5rem}
+
+/* DEADLINE CALENDAR */
+.dl-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:.85rem;margin-bottom:1rem}
+.dl-card{border-radius:var(--rm);overflow:hidden;box-shadow:var(--sh)}
+.dl-card-head{padding:.75rem 1rem;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+.dl-card-head.ref{background:#7F1D1D;color:#FFF}
+.dl-card-head.oct19{background:#1E3A5F;color:#FFF}
+.dl-card-head.oct20{background:var(--navy);color:#FFF}
+.dl-card-head.oct22{background:#1A4731;color:#FFF}
+.dl-card-head.oct23{background:#5B21B6;color:#FFF}
+.dl-card-body{background:var(--white);border:1px solid var(--border);border-top:none;padding:.9rem 1rem}
+.dl-date-big{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--text);line-height:1}
+.dl-date-yr{font-size:.75rem;color:var(--text-s);margin-bottom:.4rem}
+.dl-card p{font-size:.78rem;color:var(--text-m);line-height:1.45}
+.dl-card p strong{display:block;margin-bottom:.15rem;color:var(--text)}
+.dl-note{font-size:.825rem;color:var(--text-m);background:var(--gold-pl);border:1px solid var(--gold-bd);border-radius:var(--rm);padding:.85rem 1.1rem;line-height:1.6}
+.dl-note strong{color:#5C4500}
+
+/* ELIGIBILITY */
+.el-grid{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
+.el-item{background:var(--white);border:1px solid var(--border);border-radius:var(--rm);padding:1.05rem 1.25rem;display:flex;gap:.8rem;align-items:flex-start;box-shadow:var(--sh)}
+.el-ck{width:20px;height:20px;background:var(--grn-bg);border:1.5px solid var(--grn);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;color:var(--grn);font-size:.65rem;font-weight:700}
+.el-text strong{display:block;font-size:.868rem;font-weight:600;margin-bottom:.18rem}
+.el-text span{font-size:.808rem;color:var(--text-s);line-height:1.5}
+.el-note{margin-top:1.25rem;padding:.9rem 1.1rem;background:var(--gold-pl);border:1px solid var(--gold-bd);border-radius:var(--rm);font-size:.838rem;color:#5C4500;line-height:1.6}
+
+/* APPLICATION COMPONENTS */
+.app-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.35rem;margin-bottom:1.35rem}
+.ec{border:1px solid var(--border);border-radius:var(--rm);overflow:hidden;box-shadow:var(--sh)}
+.ec-head{background:var(--navy);padding:1.05rem 1.3rem;color:var(--white)}
+.ec-head h3{font-family:'Playfair Display',serif;font-size:1.02rem;font-weight:700;margin-bottom:.3rem}
+.ec-pg{display:inline-block;background:var(--gold);color:var(--navy-dk);font-size:.66rem;font-weight:700;padding:.1rem .42rem;border-radius:3px}
+.ec-body{background:var(--white);padding:1.05rem 1.3rem}
+.ec-body p{font-size:.858rem;color:var(--text-m);line-height:1.6;margin-bottom:.85rem}
+.ec-rows{list-style:none;border-top:1px solid var(--border);padding-top:.85rem}
+.ec-rows li{display:flex;justify-content:space-between;align-items:center;padding:.32rem 0;border-bottom:1px dashed var(--border);font-size:.82rem}
+.ec-rows li:last-child{border-bottom:none}
+.ec-nm{color:var(--text-m);font-weight:500}
+.ec-ln{background:var(--navy-sf);color:var(--navy);font-size:.73rem;font-weight:700;padding:.08rem .36rem;border-radius:3px}
+.letters{background:var(--white);border:1px solid var(--border);border-radius:var(--rm);padding:1.3rem;box-shadow:var(--sh)}
+.letters h3{font-size:.92rem;font-weight:700;color:var(--navy);margin-bottom:.6rem}
+.letters > p{font-size:.838rem;color:var(--text-m);margin-bottom:.85rem;line-height:1.6}
+.lt-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem;margin-bottom:.85rem}
+.lt{background:var(--navy-sf);border-radius:var(--r);padding:.75rem;font-size:.8rem;color:var(--navy);line-height:1.5}
+.lt strong{display:block;font-weight:600;margin-bottom:.2rem}
+.review-comments{background:var(--fog);border-radius:var(--rm);padding:1rem 1.25rem}
+.review-comments h4{font-size:.78rem;font-weight:700;color:var(--text-s);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.65rem}
+.rc-list{list-style:none}
+.rc-list li{font-size:.808rem;color:var(--text-m);padding:.38rem 0 .38rem 1.1rem;position:relative;border-bottom:1px solid var(--border);line-height:1.5;font-style:italic}
+.rc-list li:last-child{border-bottom:none}
+.rc-list li::before{content:'"';position:absolute;left:0;color:var(--gold);font-size:1rem;font-family:'Playfair Display',serif;font-weight:700}
+
+/* REVIEW CRITERIA */
+.cr-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.35rem}
+.cr-card{border-radius:var(--rm);overflow:hidden}
+.cr-head{padding:1.05rem 1.3rem;font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--white)}
+.cr-head.im{background:var(--navy-md);border-bottom:3px solid #5B8AE8}
+.cr-head.bi{background:#1A5C38;border-bottom:3px solid #34A868}
+.cr-body{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-top:none;padding:1.05rem 1.3rem}
+.cr-def{font-size:.888rem;font-style:italic;color:rgba(255,255,255,.78);margin-bottom:.85rem;padding-bottom:.85rem;border-bottom:1px solid rgba(255,255,255,.1);line-height:1.65}
+.cr-pts{list-style:none}
+.cr-pts li{font-size:.838rem;color:rgba(255,255,255,.72);padding:.38rem 0 .38rem 1.1rem;position:relative;border-bottom:1px solid rgba(255,255,255,.06);line-height:1.5}
+.cr-pts li:last-child{border-bottom:none}
+.cr-pts li::before{content:'→';position:absolute;left:0;color:rgba(255,255,255,.3)}
+.cr-check{margin-top:1.75rem;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:var(--rm);padding:1.3rem}
+.cr-check h3{font-size:.76rem;font-weight:700;color:var(--gold-lt);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.85rem}
+.chk-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:.65rem}
+.chk{background:rgba(255,255,255,.05);border-radius:var(--r);padding:.65rem;text-align:center;font-size:.75rem;color:rgba(255,255,255,.68);line-height:1.4}
+.chk-n{display:block;font-family:'Playfair Display',serif;font-size:1.15rem;color:var(--white);font-weight:700;margin-bottom:.18rem}
+
+/* ESSAY TABS */
+.tabs-nav{display:flex;border-bottom:2px solid var(--border);margin-bottom:2rem;flex-wrap:wrap;gap:.1rem}
+.tab-btn{padding:.65rem 1.1rem;border:none;background:transparent;font-family:'Inter',sans-serif;font-size:.848rem;font-weight:600;color:var(--text-s);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;transition:all .13s;white-space:nowrap}
+.tab-btn:hover{color:var(--navy)}
+.tab-btn.active{color:var(--navy);border-bottom-color:var(--navy)}
+.tab-pane{display:none}
+.tab-pane.active{display:block}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:1.35rem}
+.tip-card{background:var(--white);border:1px solid var(--border);border-radius:var(--rm);padding:1.3rem;box-shadow:var(--sh)}
+.tip-card h3{font-size:.92rem;font-weight:700;color:var(--navy);margin-bottom:.85rem;padding-bottom:.72rem;border-bottom:1px solid var(--border)}
+.tip-list{list-style:none}
+.tip-list li{font-size:.838rem;color:var(--text-m);padding:.45rem 0 .45rem 1.15rem;position:relative;border-bottom:1px solid var(--fog);line-height:1.55}
+.tip-list li:last-child{border-bottom:none}
+.tip-list li::before{content:'•';position:absolute;left:0;color:var(--gold);font-weight:700}
+.tip-list li strong{color:var(--navy)}
+.step-list{list-style:none;counter-reset:st}
+.step-list li{counter-increment:st;font-size:.838rem;color:var(--text-m);padding:.55rem 0 .55rem 2.2rem;border-bottom:1px solid var(--fog);position:relative;line-height:1.55}
+.step-list li:last-child{border-bottom:none}
+.step-list li::before{content:counter(st);position:absolute;left:0;top:.5rem;width:1.35rem;height:1.35rem;background:var(--navy);color:var(--white);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.66rem;font-weight:700}
+.step-list li strong{color:var(--navy)}
+.pg-tag{display:inline-block;font-size:.65rem;font-weight:600;background:var(--navy-sf);color:var(--navy);padding:.07rem .36rem;border-radius:3px;margin-left:.2rem}
+
+/* WRITING MAKEOVER / BEFORE-AFTER */
+.makeover-grid{display:grid;gap:1.1rem}
+.ba-item{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+.ba-label{font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;margin-bottom:.38rem;display:flex;align-items:center;gap:.35rem}
+.ba-before .ba-label{color:var(--red-tx)}
+.ba-after .ba-label{color:var(--grn)}
+.ba-before .ba-box{background:var(--red-bg);border:1px solid var(--red-bd);border-radius:var(--r);padding:.7rem .9rem;font-size:.825rem;color:var(--red-tx);line-height:1.55}
+.ba-after .ba-box{background:var(--grn-bg);border:1px solid var(--grn-bd);border-radius:var(--r);padding:.7rem .9rem;font-size:.825rem;color:#065F46;line-height:1.55}
+.ba-category{font-size:.72rem;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.6rem;padding-bottom:.5rem;border-bottom:1px solid var(--border)}
+
+/* PITFALLS */
+.pf-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.pf-card{background:var(--white);border:1px solid var(--border);border-left:3px solid #DC2626;border-radius:0 var(--rm) var(--rm) 0;padding:1.1rem 1.25rem;box-shadow:var(--sh)}
+.pf-num{display:inline-block;background:#FEE2E2;color:#991B1B;font-size:.7rem;font-weight:700;padding:.1rem .4rem;border-radius:3px;margin-bottom:.4rem}
+.pf-card h3{font-size:.9rem;font-weight:700;color:var(--text);margin-bottom:.4rem}
+.pf-card p{font-size:.818rem;color:var(--text-m);line-height:1.55}
+.pf-card ul{list-style:none;margin-top:.5rem}
+.pf-card ul li{font-size:.808rem;color:var(--text-m);padding:.25rem 0 .25rem 1rem;position:relative;line-height:1.5}
+.pf-card ul li::before{content:'→';position:absolute;left:0;color:#DC2626}
+
+/* BI FRAMEWORK */
+.bi-fw{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.25rem}
+.bi-item{background:var(--white);border:1px solid var(--border);border-radius:var(--rm);padding:1.1rem 1.25rem;box-shadow:var(--sh);display:flex;gap:.85rem}
+.bi-num{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:var(--navy-sf);line-height:1;flex-shrink:0}
+.bi-item h3{font-size:.9rem;font-weight:700;color:var(--navy);margin-bottom:.3rem}
+.bi-item p{font-size:.818rem;color:var(--text-m);line-height:1.55}
+.bi-quote{background:var(--navy-sf);border-left:3px solid var(--navy);border-radius:0 var(--rm) var(--rm) 0;padding:1rem 1.25rem;font-size:.88rem;color:var(--navy);line-height:1.7;font-style:italic}
+.bi-quote strong{font-style:normal;font-weight:700}
+
+/* MEHARRY ADVANTAGE */
+.adv{background:var(--gold);background-image:radial-gradient(ellipse at 8% 50%,rgba(255,255,255,.14) 0%,transparent 55%),radial-gradient(ellipse at 92% 15%,rgba(0,0,0,.08) 0%,transparent 50%)}
+.adv .lbl{color:rgba(0,16,64,.5)}
+.adv .sh{color:var(--navy-dk)}
+.adv .sub{color:rgba(0,0,0,.6)}
+.pil-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;margin-bottom:1.35rem}
+.pil{background:rgba(255,255,255,.22);border:1px solid rgba(255,255,255,.32);border-radius:var(--rm);padding:1.3rem}
+.pil-ico{font-size:1.5rem;margin-bottom:.6rem}
+.pil h3{font-size:.92rem;font-weight:700;color:var(--navy-dk);margin-bottom:.38rem}
+.pil p{font-size:.828rem;color:rgba(0,0,0,.68);line-height:1.6}
+.adv-q{background:rgba(255,255,255,.26);border-left:4px solid var(--navy);border-radius:0 var(--rm) var(--rm) 0;padding:1.1rem 1.3rem;font-size:.9rem;color:var(--navy-dk);line-height:1.7;font-style:italic}
+.adv-q strong{font-style:normal}
+
+/* TIMELINE */
+.tl{position:relative;margin-top:.5rem}
+.tl::before{content:'';position:absolute;left:104px;top:0;bottom:0;width:2px;background:var(--border)}
+.tl-row{display:flex;gap:1.6rem;margin-bottom:1.6rem;position:relative}
+.tl-dt{width:96px;flex-shrink:0;text-align:right;font-size:.76rem;font-weight:700;color:var(--text-s);padding-top:.15rem;line-height:1.4}
+.tl-dot{position:relative;flex-shrink:0;width:18px;height:18px;margin-top:.15rem;z-index:1}
+.tl-dot::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:11px;height:11px;border-radius:50%;background:var(--navy);border:2px solid var(--white);box-shadow:0 0 0 2px var(--navy)}
+.tl-dot.gld::after{background:var(--gold);box-shadow:0 0 0 2px var(--gold)}
+.tl-dot.red::after{background:#DC2626;box-shadow:0 0 0 2px #DC2626}
+.tl-box{flex:1;background:var(--white);border:1px solid var(--border);border-radius:var(--rm);padding:.9rem 1.1rem;box-shadow:var(--sh)}
+.tl-box.hi{border-color:var(--gold);border-width:1.5px}
+.tl-box h3{font-size:.9rem;font-weight:700;color:var(--navy);margin-bottom:.28rem}
+.tl-box p{font-size:.818rem;color:var(--text-m);line-height:1.55}
+.tl-tag{display:inline-block;font-size:.64rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;padding:.07rem .4rem;border-radius:3px;margin-bottom:.35rem}
+.tl-tag.act{background:var(--navy-sf);color:var(--navy)}
+.tl-tag.dl{background:#FEF3C7;color:#92400E}
+.tl-tag.sub{background:#FEE2E2;color:#991B1B}
+
+/* RESOURCES */
+.res-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.9rem}
+.res{display:block;background:var(--white);border:1px solid var(--border);border-radius:var(--rm);padding:1.1rem;text-decoration:none;box-shadow:var(--sh);transition:border-color .14s,transform .14s}
+.res:hover{border-color:var(--navy);transform:translateY(-2px)}
+.res h3{font-size:.86rem;font-weight:700;color:var(--navy);margin-bottom:.32rem}
+.res p{font-size:.785rem;color:var(--text-s);line-height:1.5}
+.res-tag{display:inline-block;font-size:.64rem;font-weight:600;background:var(--navy-sf);color:var(--navy);padding:.07rem .36rem;border-radius:3px;margin-bottom:.42rem}
+
+/* CONTACT */
+.ct-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}
+.ct-card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:var(--rm);padding:1.3rem}
+.ct-card h3{font-size:.92rem;font-weight:700;color:var(--gold-lt);margin-bottom:.6rem}
+.ct-card p{font-size:.838rem;color:rgba(255,255,255,.68);line-height:1.65}
+.ct-card a{color:var(--gold-lt);text-decoration:none}
+.ct-card a:hover{text-decoration:underline}
+
+/* FOOTER */
+footer{background:var(--navy-dk);border-top:1px solid rgba(255,255,255,.09);padding:1.3rem 1.5rem;text-align:center;font-size:.77rem;color:rgba(255,255,255,.36)}
+footer a{color:rgba(255,255,255,.5);text-decoration:none}
+footer a:hover{color:var(--gold-lt)}
+
+/* RESPONSIVE */
+@media(max-width:860px){
+  .nav-links{display:none}
+  .hero-in{grid-template-columns:1fr}
+  .hero-dl{display:none}
+  .ov-grid{grid-template-columns:1fr 1fr}
+  .dl-grid{grid-template-columns:1fr 1fr}
+  .el-grid,.app-grid,.cr-grid,.two-col,.pf-grid,.bi-fw,.pil-grid,.res-grid,.ct-grid,.lt-grid,.chk-grid{grid-template-columns:1fr}
+  .ba-item{grid-template-columns:1fr}
+  .hero-stats .s-div{display:none}
+  .tl::before{left:70px}
+  .tl-dt{width:62px;font-size:.72rem}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<!-- DEADLINE BANNER -->
+<div class="dl-banner">
+  <div class="dl-banner-in">
+    <span>&#9888; <strong>2026 Application Deadlines:</strong></span>
+    <span class="dl-pill">&#128338; Ref. Letters: Oct 16</span>
+    <span class="dl-pill">Life Sciences: Oct 19</span>
+    <span class="dl-pill">CS / CISE / Materials / Psych / Social Sci.: Oct 20</span>
+    <span class="dl-pill">Engineering: Oct 22</span>
+    <span class="dl-pill">Chem / Physics / Math: Oct 23</span>
+    <span>&#8212; <a href="https://www.nsf.gov/funding/initiatives/grfp" target="_blank">Source: NSF.gov &#8599;</a></span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-in">
+    <a class="nav-brand" href="#">
+      <div class="nav-m">M</div>
+      <div>
+        <div class="nav-lbl">Meharry GRFP Help</div>
+        <div class="nav-sub">School of Applied Computational Sciences</div>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#overview">Overview</a></li>
+      <li><a href="#deadlines">Deadlines</a></li>
+      <li><a href="#eligibility">Eligibility</a></li>
+      <li><a href="#application">Application</a></li>
+      <li><a href="#criteria">Criteria</a></li>
+      <li><a href="#guide">Writing Guide</a></li>
+      <li><a href="#advantage">Meharry Advantage</a></li>
+      <li><a href="#timeline">Timeline</a></li>
+      <li><a href="#resources">Resources</a></li>
+      <li><a href="#help">Get Help</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-in">
+    <div>
+      <div class="hero-badge">&#127891; NSF Graduate Research Fellowship Program</div>
+      <h1>Your GRFP Journey<br>Starts at <em>Meharry</em></h1>
+      <p class="hero-lead">One of the nation's oldest and most prestigious graduate fellowships — and Meharry students bring a uniquely powerful story. This guide draws on five expert sources to help you write it and win.</p>
+      <div class="hero-stats">
+        <div><div class="s-num">$37K</div><div class="s-lbl">annual stipend</div></div>
+        <div class="s-div"></div>
+        <div><div class="s-num">$16K</div><div class="s-lbl">to institution / yr</div></div>
+        <div class="s-div"></div>
+        <div><div class="s-num">3 yrs</div><div class="s-lbl">over 5-yr window</div></div>
+        <div class="s-div"></div>
+        <div><div class="s-num">70K+</div><div class="s-lbl">fellows historically</div></div>
+      </div>
+      <div class="ctas">
+        <a href="https://www.nsf.gov/funding/initiatives/grfp" target="_blank" class="btn btn-gold">NSF GRFP Official Site &#8599;</a>
+        <a href="#guide" class="btn btn-ghost">Jump to Essay Guide</a>
+      </div>
+    </div>
+    <div class="hero-dl">
+      <h4>&#128338; 2026 Deadlines by Field</h4>
+      <div class="dl-row"><div class="dl-field">&#128204; Reference Letters</div><div class="dl-date">Oct 16 · 8 pm ET</div></div>
+      <div class="dl-row"><div class="dl-field">Life Sciences</div><div class="dl-date">Oct 19</div></div>
+      <div class="dl-row"><div class="dl-field">CISE / Materials /<br>Psychology / Social Sci.</div><div class="dl-date">Oct 20</div></div>
+      <div class="dl-row"><div class="dl-field">Engineering</div><div class="dl-date">Oct 22</div></div>
+      <div class="dl-row"><div class="dl-field">Chemistry / Geo /<br>Math / Physics & Astro</div><div class="dl-date">Oct 23</div></div>
+      <div class="dl-warn">&#9888; Letters due <strong>before</strong> most application deadlines. Request them by August.</div>
+    </div>
+  </div>
+</section>
+
+<!-- OVERVIEW -->
+<section class="bg-fog" id="overview">
+  <div class="wrap">
+    <div class="lbl">About the Program</div>
+    <h2 class="sh">What is the NSF GRFP?</h2>
+    <div class="ov-intro">
+      <p>The NSF Graduate Research Fellowship Program has invested in outstanding graduate students in STEM since 1952 — making it the nation's oldest graduate fellowship program. It funds <em>the person, not the project</em>. NSF is betting on your long-term potential as a scientist, not a single research question. With 70,000+ fellows over 73 years, the network of GRFP alumni includes 30 Nobel Laureates, 400+ National Academy members, and founders of major companies.</p>
+      <p>The competitive reality: 12,000–17,000 students apply each year, and roughly 2,000 are selected. <strong>You must package yourself well.</strong> According to Claire McKay Bowen, a 2015 GRFP fellow who reviewed hundreds of applications at Notre Dame, winners are either "golden" people who cannot fail — or people who know how to present themselves compellingly. This guide focuses on the second group.</p>
+    </div>
+    <div class="ov-grid">
+      <div class="ov-card">
+        <div class="ov-num">$53K <span class="ov-unit">/ yr</span></div>
+        <p class="ov-desc">$37,000 stipend to you + $16,000 to your institution covering <em>all</em> tuition and mandatory fees — no cost to you.</p>
+      </div>
+      <div class="ov-card">
+        <div class="ov-num">3 yrs <span class="ov-unit">support</span></div>
+        <p class="ov-desc">Three funded years over a five-year fellowship window. You may defer up to two years if you have another funding source.</p>
+      </div>
+      <div class="ov-card">
+        <div class="ov-num">No <span class="ov-unit">service req.</span></div>
+        <p class="ov-desc">No post-graduate service requirement and no restrictions on your PI's grant. Freedom to pursue your research.</p>
+      </div>
+      <div class="ov-card">
+        <div class="ov-num">73 <span class="ov-unit">years strong</span></div>
+        <p class="ov-desc">70K+ fellowships at 500+ institutions. Alumni include 30 Nobel laureates. The prestige and network are real and lasting.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEADLINES BY FIELD -->
+<section id="deadlines">
+  <div class="wrap">
+    <div class="lbl">Act Now</div>
+    <h2 class="sh">2026 Deadlines by Field</h2>
+    <p class="sub">Deadlines vary by discipline. SACS students in CS, data science, and AI/ML typically fall under <strong>Computer and Information Science and Engineering</strong> — October 20. Reference letters are due before your application.</p>
+    <div class="dl-grid">
+      <div class="dl-card">
+        <div class="dl-card-head ref">&#9888; Reference Letters</div>
+        <div class="dl-card-body">
+          <div class="dl-date-big">Oct 16</div>
+          <div class="dl-date-yr">2026 · 8:00 PM ET</div>
+          <p><strong>All fields.</strong> Letters must be submitted by this date — before most application deadlines. Request letters by August.</p>
+        </div>
+      </div>
+      <div class="dl-card">
+        <div class="dl-card-head oct19">Life Sciences</div>
+        <div class="dl-card-body">
+          <div class="dl-date-big">Oct 19</div>
+          <div class="dl-date-yr">2026</div>
+          <p><strong>Includes:</strong> Biology, biochemistry, biomedical sciences, ecology, genetics, neuroscience, and related.</p>
+        </div>
+      </div>
+      <div class="dl-card">
+        <div class="dl-card-head oct20">CISE / Materials / Psych / Social Sci.</div>
+        <div class="dl-card-body">
+          <div class="dl-date-big">Oct 20</div>
+          <div class="dl-date-yr">2026</div>
+          <p><strong>Includes:</strong> Computer &amp; Information Science &amp; Engineering (CISE), Data Science, AI/ML, Materials Research, Psychology, Social Sciences. <em>Most SACS students. Note: standalone Engineering has its own deadline — Oct 22.</em></p>
+        </div>
+      </div>
+      <div class="dl-card">
+        <div class="dl-card-head oct22">Engineering</div>
+        <div class="dl-card-body">
+          <div class="dl-date-big">Oct 22</div>
+          <div class="dl-date-yr">2026</div>
+          <p><strong>Includes:</strong> Biomedical, chemical, civil, electrical, mechanical, and other engineering disciplines.</p>
+        </div>
+      </div>
+      <div class="dl-card">
+        <div class="dl-card-head oct23">Chemistry &amp; Physical Sci.</div>
+        <div class="dl-card-body">
+          <div class="dl-date-big">Oct 23</div>
+          <div class="dl-date-yr">2026</div>
+          <p><strong>Includes:</strong> Chemistry, Geosciences, Mathematical Sciences, Physics and Astronomy.</p>
+        </div>
+      </div>
+    </div>
+    <div class="dl-note">&#128276; <strong>Confirm your field's deadline in the official solicitation.</strong> The deadlines above are from the <a href="https://www.nsf.gov/funding/initiatives/grfp" target="_blank" style="color:#5C4500;font-weight:700">2026 NSF GRFP initiative page</a>. You may also withdraw your application without penalty until <strong>November 15, 2026</strong>. All times are Eastern.</div>
+  </div>
+</section>
+
+<!-- ELIGIBILITY -->
+<section class="bg-fog" id="eligibility">
+  <div class="wrap">
+    <div class="lbl">Who Can Apply</div>
+    <h2 class="sh">Eligibility Requirements</h2>
+    <p class="sub">All conditions below must be met. Read the current solicitation — NSF updates requirements annually and self-certification is your responsibility.</p>
+    <div class="el-grid">
+      <div class="el-item">
+        <div class="el-ck">&#10003;</div>
+        <div class="el-text"><strong>US Citizen, National, or Permanent Resident</strong><span>Federal funding requirement. Green card holders are eligible. Visa holders are not. You self-certify eligibility on application.</span></div>
+      </div>
+      <div class="el-item">
+        <div class="el-ck">&#10003;</div>
+        <div class="el-text"><strong>Senior Undergrad or Early Graduate Student</strong><span>Graduating seniors, or first- or second-year students in a full-time research-based master's or doctoral program.</span></div>
+      </div>
+      <div class="el-item">
+        <div class="el-ck">&#10003;</div>
+        <div class="el-text"><strong>Only One Graduate Application — Choose Wisely</strong><span>Graduate students apply in year 1 OR year 2 — not both. Undergrads may apply before starting grad school, then once as a grad student (year 1 or 2).</span></div>
+      </div>
+      <div class="el-item">
+        <div class="el-ck">&#10003;</div>
+        <div class="el-text"><strong>Enrolled Full-Time in a Research-Based STEM Degree</strong><span>Must be in an NSF-eligible field. Professional degrees (MD, JD, MBA) do not qualify — but combined MD/PhD programs may qualify on the research side.</span></div>
+      </div>
+      <div class="el-item">
+        <div class="el-ck">&#10003;</div>
+        <div class="el-text"><strong>NSF-Supported Field of Study</strong><span>Includes CS, data science, bioinformatics, biomedical engineering, physics, chemistry, math, and many more. Check the solicitation for the full field list.</span></div>
+      </div>
+      <div class="el-item">
+        <div class="el-ck">&#10003;</div>
+        <div class="el-text"><strong>No Prior NSF GRFP Award</strong><span>If you previously received a GRFP award (not just applied), you cannot apply again. Prior non-winning applications are not disqualifying.</span></div>
+      </div>
+    </div>
+    <div class="el-note" style="margin-top:1.25rem;">
+      &#9888; <strong>Strategy note:</strong> Claire McKay Bowen recommends applying as a senior undergrad if possible — you gain reviewer feedback and can use it when applying again in year 1 or 2. Review comments are invaluable even if you don't win. See the <a href="https://www.nsf.gov/funding/opportunities/grfp-nsf-graduate-research-fellowship-program/" target="_blank" style="color:#5C4500;font-weight:600">current solicitation &#8599;</a> for the eligibility questionnaire.
+    </div>
+  </div>
+</section>
+
+<!-- APPLICATION COMPONENTS -->
+<section id="application">
+  <div class="wrap">
+    <div class="lbl">What You Submit</div>
+    <h2 class="sh">Application Components</h2>
+    <p class="sub">Two essays plus letters of reference — all evaluated against Intellectual Merit and Broader Impacts. Follow the guidelines exactly; reviewers screen for missing components and formatting violations first.</p>
+    <div class="app-grid">
+      <div class="ec">
+        <div class="ec-head"><h3>Personal Statement, Relevant Background &amp; Future Goals</h3><div class="ec-pg">3 pages</div></div>
+        <div class="ec-body">
+          <p>Your story: who you are, what shaped your path to science, your research experience, and where you're going. NSF wants to invest in <em>you</em> — not just a research question. Make reviewers emotionally invested in your journey.</p>
+          <ul class="ec-rows">
+            <li><span class="ec-nm">Personal Statement — your origin story</span><span class="ec-ln">~1 page</span></li>
+            <li><span class="ec-nm">Relevant Background — your research experiences</span><span class="ec-ln">~1 page</span></li>
+            <li><span class="ec-nm">Future Goals — your career vision</span><span class="ec-ln">~½ page</span></li>
+            <li><span class="ec-nm">Intellectual Merit — <em>explicit header required</em></span><span class="ec-ln">~¼ page</span></li>
+            <li><span class="ec-nm">Broader Impacts — <em>explicit header required</em></span><span class="ec-ln">~¼ page</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="ec">
+        <div class="ec-head"><h3>Graduate Research Plan Statement</h3><div class="ec-pg">2 pages</div></div>
+        <div class="ec-body">
+          <p>An original research proposal in your NSF field. You aren't contractually bound to this project — it demonstrates you can think like a scientist. A common mistake: treating it like a standalone grant rather than connecting it to your personal statement.</p>
+          <ul class="ec-rows">
+            <li><span class="ec-nm">Introduction — problem, past work, why it matters</span><span class="ec-ln">~⅓ page</span></li>
+            <li><span class="ec-nm">Objective — clear statement of what you will do</span><span class="ec-ln">concise</span></li>
+            <li><span class="ec-nm">Methodology — plan, contingencies, your skills</span><span class="ec-ln">~½ page</span></li>
+            <li><span class="ec-nm">Anticipated Results &amp; Products</span><span class="ec-ln">brief</span></li>
+            <li><span class="ec-nm">Intellectual Merit — <em>explicit header required</em></span><span class="ec-ln">~⅓ page</span></li>
+            <li><span class="ec-nm">Broader Impacts — <em>explicit header required</em></span><span class="ec-ln">~⅓ page</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="letters">
+      <h3>&#128236; Letters of Reference — Ask 4 to Guarantee 3 Submit on Time</h3>
+      <p>The solicitation specifies the minimum number of letters required — verify the exact count in the current solicitation, as requirements can change year to year. Regardless of the maximum allowed, request more writers than the minimum so you are protected if one misses the deadline. Many applications are disqualified for missing letters. Speak to letter writers <strong>at least 2 months in advance</strong> and provide your draft essays so they can complement — not repeat — what you say.</p>
+      <div class="lt-grid">
+        <div class="lt"><strong>Letter 1 — Intellectual Merit</strong>Current graduate advisor or potential advisor who can speak to your research ability, independence, and potential to complete graduate school.</div>
+        <div class="lt"><strong>Letter 2 — Intellectual Merit</strong>Past research advisor, lab PI, or internship supervisor who has seen your hands-on scientific work in depth.</div>
+        <div class="lt"><strong>Letter 3 — Broader Impacts</strong>A mentor from teaching, outreach, or service — someone who can speak to your impact on others outside the lab. This is the one most applicants neglect.</div>
+      </div>
+      <div class="review-comments">
+        <h4>What reviewers actually write about letters — quotes from real review panels</h4>
+        <ul class="rc-list">
+          <li>She has strong letters praising her independence, ambition, breadth and depth of knowledge, and passion to produce promising and valuable research.</li>
+          <li>Strong recommendations from three different peers at R1 universities in the nation and around the world give confidence that this applicant has a bright future in her chosen field.</li>
+          <li>The applicant is well-rounded and has been described as being friendly and working well with others — all references give their highest recommendations.</li>
+          <li>Applicant's great work ethic as attested to by references as being more than that of other graduate students is an acknowledgement of demonstrated initiative and potential for graduate work.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEW CRITERIA -->
+<section class="bg-navy" id="criteria">
+  <div class="wrap">
+    <div class="lbl">How You're Scored</div>
+    <h2 class="sh">The Two Review Criteria</h2>
+    <p class="sub">Every component — both essays and all letters — must address both criteria. Both require explicit section headers in each essay. Reviewers score independently, then discuss applications near cut-offs.</p>
+    <div class="cr-grid">
+      <div class="cr-card">
+        <div class="cr-head im">&#9879;&#65039; Intellectual Merit</div>
+        <div class="cr-body">
+          <p class="cr-def">"The potential to advance knowledge and understanding within its own field or across different fields."</p>
+          <ul class="cr-pts">
+            <li>How does your work advance knowledge in your field or across fields?</li>
+            <li>What creative or potentially transformative concepts are in play?</li>
+            <li>Is your research plan well-reasoned and organized, with a mechanism to assess success?</li>
+            <li>What are your qualifications, skills, and relevant experience?</li>
+            <li>Do you have access to adequate resources — mentors, equipment, collaborators?</li>
+          </ul>
+        </div>
+      </div>
+      <div class="cr-card">
+        <div class="cr-head bi">&#127758; Broader Impacts</div>
+        <div class="cr-body">
+          <p class="cr-def">"The potential to benefit society and contribute to desired societal outcomes." — The make-or-break criterion. Don't save it for last.</p>
+          <ul class="cr-pts">
+            <li>Full participation of underrepresented groups in STEM</li>
+            <li>Improved STEM education and educator development at any level</li>
+            <li>Increased public scientific literacy and community engagement</li>
+            <li>Development of a diverse, globally competitive STEM workforce</li>
+            <li>Improved well-being of individuals in society</li>
+            <li>Health equity and reduction of health disparities</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="cr-check">
+      <h3>Intellectual Merit — 5 sub-criteria reviewers evaluate (BI is scored separately on its own criteria)</h3>
+      <div class="chk-grid">
+        <div class="chk"><span class="chk-n">&#9312;</span>Scientific or societal impact of the research question</div>
+        <div class="chk"><span class="chk-n">&#9313;</span>Why fund you — your unique innovation and perspective</div>
+        <div class="chk"><span class="chk-n">&#9314;</span>Detailed plan with built-in success metrics</div>
+        <div class="chk"><span class="chk-n">&#9315;</span>Your qualifications, skills, and research experience</div>
+        <div class="chk"><span class="chk-n">&#9316;</span>Resources, mentors, and collaborators to execute</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WRITING GUIDE — 5 TABS -->
+<section id="guide">
+  <div class="wrap">
+    <div class="lbl">Writing Strategies</div>
+    <h2 class="sh">The Essay Writing Guide</h2>
+    <p class="sub">Five tabs covering every dimension of the application — from structure to sentence-level craft. Informed by Alex Lang, Logan Pearce, and Claire McKay Bowen.</p>
+
+    <div class="tabs-nav">
+      <button class="tab-btn active" onclick="tab('ps',this)">Personal Statement</button>
+      <button class="tab-btn" onclick="tab('rs',this)">Research Plan</button>
+      <button class="tab-btn" onclick="tab('craft',this)">Writing Craft</button>
+      <button class="tab-btn" onclick="tab('bi',this)">Stronger Broader Impacts</button>
+      <button class="tab-btn" onclick="tab('pf',this)">Common Pitfalls</button>
+    </div>
+
+    <!-- TAB 1: PERSONAL STATEMENT -->
+    <div class="tab-pane active" id="tab-ps">
+      <div class="two-col">
+        <div class="tip-card">
+          <h3>Recommended structure</h3>
+          <ol class="step-list">
+            <li><strong>Personal Statement</strong><span class="pg-tag">~1 page</span> — Your origin story: why science? What unique perspective do you bring? Include hardships overcome, communities you belong to, what makes you distinctively <em>you</em>. NSF funds the person — make reviewers care about you personally.</li>
+            <li><strong>Relevant Background</strong><span class="pg-tag">~1 page</span> — Research experiences, one paragraph each: why you chose that lab, the science goal, your specific contribution, what you produced, results, how you shared the work, and what you learned. Quantify everything you can.</li>
+            <li><strong>Future Goals</strong><span class="pg-tag">~½ page</span> — Tie your background and mission into a coherent vision. Where are you going, why does it matter, and how will NSF support help you get there?</li>
+            <li><strong>Intellectual Merit</strong><span class="pg-tag">explicit header</span> — Concise summary of how your past and planned work advances knowledge in your field.</li>
+            <li><strong>Broader Impacts</strong><span class="pg-tag">explicit header</span> — Concise summary of your contributions to society, STEM diversity, and community. In this essay, BI is about <em>you</em> — your teaching, mentoring, outreach, and community-building — not just your research topic.</li>
+          </ol>
+        </div>
+        <div class="tip-card">
+          <h3>Key tips</h3>
+          <ul class="tip-list">
+            <li>Both essays need <strong>explicit IM and BI section headers</strong> — this is required, not optional. Missing headers is a disqualifying signal to reviewers.</li>
+            <li><strong>Tell a story, not a CV.</strong> Think of a thread that ties all your experiences into a coherent narrative. Where did you start? What shaped you? Where are you going? Make reviewers emotionally invested.</li>
+            <li>For each research experience, follow the 7-element formula: <em>why you chose that lab → science goal → your specific role → what you produced → results → how you shared it → what you learned.</em> Be specific — "I designed experiments" beats "I helped with research."</li>
+            <li>If you faced adversity (first-gen student, financial hardship, caretaker role), include it — NSF values the full participation of underrepresented groups and wants to understand what shaped your path.</li>
+            <li>Address any weaknesses in your record — a GPA dip, a field change, a gap year — without stating them as problems. Show what you gained and why it makes you stronger.</li>
+            <li><strong>Avoid "I hope," "I believe," "I think."</strong> Use "I will," "I intend to," "I plan to." Confidence is a review criterion. Own your accomplishments.</li>
+            <li>Do not say you were "lucky" or "fortunate" to have opportunities. You pursued them. State it that way. (See Writing Craft tab for before/after examples.)</li>
+            <li>Write for a general science audience. Your reviewer is in your primary field but not your subfield — minimize jargon or define it clearly when used.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 2: RESEARCH PLAN -->
+    <div class="tab-pane" id="tab-rs">
+      <div class="two-col">
+        <div class="tip-card">
+          <h3>Recommended structure (Claire McKay Bowen's outline)</h3>
+          <ol class="step-list">
+            <li><strong>Introduction</strong> — Problem, past attempts, and additional issues. This should be your largest section — bring the reader up to speed on scientific context. Include several citations. Grab them with the first paragraph: what is at stake and why should anyone care?</li>
+            <li><strong>Objective</strong> — A clear, concise statement of what you will do. One to three sentences. Consider bolding this sentence — make it unmissable.</li>
+            <li><strong>Methodology</strong> — Model development, evaluation, software, and other approaches. Show major steps, your creative angle, contingency plans for high-risk steps, and why <em>you</em> specifically are equipped to execute this.</li>
+            <li><strong>Anticipated Results and Products</strong> — What does success look like? What will you produce? What would a "failed" experiment still teach you? This is a specific review criterion — include it explicitly.</li>
+            <li><strong>Intellectual Merit</strong><span class="pg-tag">explicit header</span> — Address all five review criteria: impact, your unique innovation, plan quality, your qualifications, and your resources.</li>
+            <li><strong>Broader Impacts</strong><span class="pg-tag">explicit header</span> — How does this research benefit society locally, nationally, and globally? How will you disseminate results? Do not treat this as an afterthought.</li>
+            <li><strong>References</strong> — No required format; can use 10pt font. Include citations in the intro to establish the current state of research.</li>
+          </ol>
+        </div>
+        <div class="tip-card">
+          <h3>Key tips</h3>
+          <ul class="tip-list">
+            <li><strong>Do not treat this as a standalone grant proposal.</strong> It must connect to your personal statement — the research question should feel like a natural extension of your journey, not a separate document.</li>
+            <li>NSF funds the person, not the project. You're not contractually bound to this research — but you must demonstrate you think and write like a scientist.</li>
+            <li>The <strong>introduction should be the largest section</strong>. Don't assume any domain-specific knowledge. Define key terms. Explain why the problem matters before proposing your solution.</li>
+            <li>Identify the <strong>novel element</strong> of your approach. What has been done before, and what gap does your work fill? Use words like "crucial," "critical," or "transformative" — but earn them with evidence.</li>
+            <li><strong>Include a mechanism to assess success.</strong> What does "it worked" look like? This is an explicit review criterion. Don't skip it.</li>
+            <li>Include at least one alternative approach for a high-risk step. This signals scientific maturity and careful thinking.</li>
+            <li>Consider including a <strong>figure</strong> — a diagram, schematic, or data chart. It can efficiently communicate complex ideas and make your proposal memorable.</li>
+            <li>For SACS students: topics like AI/ML for health disparities, federated learning for privacy-preserving healthcare, bioinformatics pipelines, or cybersecurity for healthcare data map strongly to both IM and BI.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 3: WRITING CRAFT -->
+    <div class="tab-pane" id="tab-craft">
+      <div class="tip-card" style="margin-bottom:1.35rem">
+        <h3>Writing makeovers — before and after (from Logan Pearce's GRFP consultant guide)</h3>
+        <p style="font-size:.828rem;color:var(--text-m);margin-bottom:1.25rem;line-height:1.6">The most common writing weaknesses in GRFP applications. Each pair below shows the problem and the fix. Apply these throughout both essays.</p>
+
+        <div class="ba-category">1. Active voice — identify who is doing the action</div>
+        <div class="makeover-grid">
+          <div class="ba-item">
+            <div class="ba-before"><div class="ba-label">&#10007; Before</div><div class="ba-box">This data analysis pipeline will be used to perform analysis of black hole spectra.</div></div>
+            <div class="ba-after"><div class="ba-label">&#10003; After (active voice)</div><div class="ba-box">I will use this data analysis pipeline to analyze black hole spectra. <em style="font-size:.78rem;opacity:.8">(In GRFP, always prefer "I" over "we" — see Strategic Bolding tab.)</em></div></div>
+          </div>
+          <div class="ba-item">
+            <div class="ba-before"><div class="ba-label">&#10007; Before</div><div class="ba-box">I became familiar with the Python package.</div></div>
+            <div class="ba-after"><div class="ba-label">&#10003; After</div><div class="ba-box">I familiarized myself with the Python package. / I learned to use this Python package.</div></div>
+          </div>
+          <div class="ba-item">
+            <div class="ba-before"><div class="ba-label">&#10007; Before</div><div class="ba-box">I assisted with the project.</div></div>
+            <div class="ba-after"><div class="ba-label">&#10003; After</div><div class="ba-box">I contributed to the project. / I led the data collection phase of the project.</div></div>
+          </div>
+        </div>
+
+        <div class="ba-category" style="margin-top:1.25rem">2. Strong declarative language — commit to your future</div>
+        <div class="makeover-grid">
+          <div class="ba-item">
+            <div class="ba-before"><div class="ba-label">&#10007; Before</div><div class="ba-box">I hope to obtain a position as faculty in geosciences.</div></div>
+            <div class="ba-after"><div class="ba-label">&#10003; After</div><div class="ba-box">I intend to pursue a career as faculty in geosciences.</div></div>
+          </div>
+          <div class="ba-item">
+            <div class="ba-before"><div class="ba-label">&#10007; Before</div><div class="ba-box">I would like to start a STEM outreach program for high schoolers.</div></div>
+            <div class="ba-after"><div class="ba-label">&#10003; After</div><div class="ba-box">I plan to launch a STEM outreach program targeting underrepresented high school students in Nashville.</div></div>
+          </div>
+        </div>
+
+        <div class="ba-category" style="margin-top:1.25rem">3. Don't minimize yourself — own your opportunities</div>
+        <div class="makeover-grid">
+          <div class="ba-item">
+            <div class="ba-before"><div class="ba-label">&#10007; Before</div><div class="ba-box">I was privileged to attend the summer research institute.</div></div>
+            <div class="ba-after"><div class="ba-label">&#10003; After</div><div class="ba-box">I attended the summer research institute. / I sought out and was selected for the summer research institute.</div></div>
+          </div>
+          <div class="ba-item">
+            <div class="ba-before"><div class="ba-label">&#10007; Before</div><div class="ba-box">I was fortunate that Professor X took me on as a researcher.</div></div>
+            <div class="ba-after"><div class="ba-label">&#10003; After</div><div class="ba-box">I approached Professor X about a research project and began working in her lab that summer.</div></div>
+          </div>
+        </div>
+
+        <div class="ba-category" style="margin-top:1.25rem">4. Replace "passion" — show, don't label</div>
+        <div class="makeover-grid">
+          <div class="ba-item">
+            <div class="ba-before"><div class="ba-label">&#10007; Before</div><div class="ba-box">I am passionate about STEM outreach to young women in high school.</div></div>
+            <div class="ba-after"><div class="ba-label">&#10003; After</div><div class="ba-box">Because of my experience as a woman in STEM, I understand first-hand the impact of women-focused outreach — and I have been building that for others ever since.</div></div>
+          </div>
+          <div class="ba-item">
+            <div class="ba-before"><div class="ba-label">&#10007; Before</div><div class="ba-box">My passion for data science drives my research into federated learning.</div></div>
+            <div class="ba-after"><div class="ba-label">&#10003; After</div><div class="ba-box">Three years of building privacy-preserving systems for clinical data showed me exactly why federated learning matters — and where the field still falls short.</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="two-col">
+        <div class="tip-card">
+          <h3>Opening paragraph do's and don'ts</h3>
+          <ul class="tip-list">
+            <li><strong>Don't start with childhood stargazing or your grandparent's illness</strong> — by application 80 of 100, these stories all sound the same. Reviewers lose interest fast.</li>
+            <li>Instead: a strong declaration of career intent, a specific research moment that changed your direction, or something genuinely unexpected about your path to science.</li>
+            <li>Consider starting with what you <em>will do</em>, then stepping back to explain how you got here. This immediately positions you as a scientist with purpose.</li>
+            <li>What is unique about you and your journey? Turn what could sound like a disadvantage into a demonstrated strength. "Taking years off between undergrad and grad school gave me perspective I couldn't have gotten otherwise."</li>
+            <li>After you write your opener, ask: <em>"Have 80% of applicants written something similar?"</em> If yes, rewrite.</li>
+          </ul>
+        </div>
+        <div class="tip-card">
+          <h3>Strategic bolding &amp; audience awareness</h3>
+          <ul class="tip-list">
+            <li><strong>Use "I", "me", "my" as much as possible</strong> — not "we" and "our." This is your application, not your lab's. Take ownership of your work. "I designed, I conducted, I wrote" — not "we conducted."</li>
+            <li><strong>Bold selectively</strong> — one or two sentences per essay, maximum. Consider bolding your career goal statement and your central research proposal sentence. Too much bolding dilutes impact.</li>
+            <li>Write for your primary field, not your subfield. Your reviewer has a PhD in your field but may not know your specific niche — define key terms if they're essential to your proposal.</li>
+            <li>Connect the dots for your reader explicitly. Don't assume they'll draw the inference you want from two pieces of evidence — tell them what you want them to conclude.</li>
+            <li><strong>Ask non-scientists to read your essays.</strong> Colleagues, family, department admins — if they can't follow it, your subfield jargon is too heavy. Revise.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 4: BROADER IMPACTS -->
+    <div class="tab-pane" id="tab-bi">
+      <p style="font-size:.9rem;color:var(--text-m);line-height:1.75;margin-bottom:1.5rem;background:var(--gold-pl);border:1px solid var(--gold-bd);border-radius:var(--rm);padding:1rem 1.25rem;"><strong style="color:#5C4500">Logan Pearce, who spent two years as a GRFP consultant, calls Broader Impacts the "make-or-break" section.</strong> It's what most applicants save for last — and what most applicants write weakly. Don't. A strong BI section has five qualities.</p>
+      <div class="bi-fw">
+        <div class="bi-item"><div class="bi-num">1</div><div><h3>Connect to your story</h3><p>By the time the reader reaches your BI section, they should already be primed. Your outreach plans should flow naturally from what you've told them about yourself. Example: "Because I attended a rural school with no STEM enrichment, I understand exactly why that gap exists — and I intend to close it for others."</p></div></div>
+        <div class="bi-item"><div class="bi-num">2</div><div><h3>Propose something specific for the future</h3><p>Don't just describe what you've done — describe what you <em>will do</em>. Expand a program you run, contribute to an existing initiative, or propose something new. Reviewers want to see that you have a concrete plan, not a vague aspiration.</p></div></div>
+        <div class="bi-item"><div class="bi-num">3</div><div><h3>Be specific — not vague</h3><p>"I want to support women in STEM" is weak. "I will run for president of the Women in STEM Council and expand our after-school programming to three underserved Nashville middle schools, targeting teachers at Title I schools" is strong. Name specific populations, programs, and timelines.</p></div></div>
+        <div class="bi-item"><div class="bi-num">4</div><div><h3>Connect Personal Statement BI to Research Statement BI</h3><p>When possible, let the two BI sections reinforce each other. If your personal statement describes mentoring Black students in STEM, your research proposal's BI might discuss training diverse lab members or publishing open-access tools for under-resourced institutions.</p></div></div>
+      </div>
+      <div class="bi-item" style="margin-bottom:1.35rem;background:var(--white);border:1px solid var(--border);border-radius:var(--rm);padding:1.1rem 1.25rem;box-shadow:var(--sh)">
+        <div class="bi-num">5</div>
+        <div><h3>Ground it in numbers and evidence</h3><p>Numbers make BI claims credible. "Attendance grew from 20 to 85 participants over two years" is far stronger than "participation increased." "I mentored 6 undergrad researchers, 4 of whom are now in PhD programs" is stronger than "I mentored undergraduates." Wherever you have numbers, use them.</p></div>
+      </div>
+      <div class="bi-quote">
+        NSF explicitly values: "full participation of women, persons with disabilities, and underrepresented minorities in science, technology, engineering, and mathematics." Also: creating a teaching curriculum to improve STEM at a local school; developing STEM programs specifically targeting minorities; organizing events for undergraduate or graduate students. <strong>Helping a single student does not count as Broader Impact — systemic, scalable, or program-level work does.</strong>
+      </div>
+    </div>
+
+    <!-- TAB 5: COMMON PITFALLS -->
+    <div class="tab-pane" id="tab-pf">
+      <p style="font-size:.888rem;color:var(--text-m);line-height:1.75;margin-bottom:1.5rem;">From Claire McKay Bowen's review of hundreds of applications and Logan Pearce's two years of GRFP consulting — the patterns that consistently weaken otherwise strong applications.</p>
+      <div class="pf-grid">
+        <div class="pf-card">
+          <div class="pf-num">Pitfall 1</div>
+          <h3>NSF funds YOU — but your language says otherwise</h3>
+          <p>Using "we/our" instead of "I/my/me", saying "I hope" instead of "I will", minimizing your role with "I assisted" or "I helped." Every sentence should paint you as the driving force of your science.</p>
+          <ul><li>Replace "we conducted" with "I led"</li><li>Replace "I hope to become" with "I will pursue"</li><li>Replace "I was able to" with the actual verb ("I attended")</li></ul>
+        </div>
+        <div class="pf-card">
+          <div class="pf-num">Pitfall 2</div>
+          <h3>No coherent story thread</h3>
+          <p>A list of experiences without a narrative through-line. Reviewers read 15–25 applications in a stack — memorable ones have a clear arc from background to present to future.</p>
+          <ul><li>Outline your story chronologically before writing</li><li>Ask: "What is the one thing I want reviewers to remember about me?"</li><li>Make sure each experience connects to the next</li></ul>
+        </div>
+        <div class="pf-card">
+          <div class="pf-num">Pitfall 3</div>
+          <h3>Weak Broader Impacts — saved for last, written in five minutes</h3>
+          <p>The most common reason for a mediocre score. BI is what differentiates equally-qualified applicants. Generic statements like "I will mentor students" without specifics are red flags.</p>
+          <ul><li>Write BI early — not at the end of the process</li><li>Name specific programs, populations, timelines</li><li>Ground claims in numbers wherever possible</li></ul>
+        </div>
+        <div class="pf-card">
+          <div class="pf-num">Pitfall 4</div>
+          <h3>Not addressing weaknesses in your record</h3>
+          <p>A GPA dip, a field change, missing publications for your level of experience — reviewers will notice. Silence on these is worse than addressing them. Turn them into strengths without naming them as deficits.</p>
+          <ul><li>Don't say "I have a low GPA, but..." — just demonstrate capability</li><li>Show what you gained from non-linear paths</li><li>Let your research accomplishments speak louder than transcripts</li></ul>
+        </div>
+        <div class="pf-card">
+          <div class="pf-num">Pitfall 5</div>
+          <h3>Missing application components or formatting violations</h3>
+          <p>Reviewers screen for compliance first. Missing letters, exceeded page limits, wrong font size, or missing IM/BI explicit headers can disqualify an otherwise excellent application before it's read.</p>
+          <ul><li>Submit at least 48 hours early</li><li>Confirm all letters are submitted (not just requested)</li><li>Check font size, margins, and page limits against the solicitation</li></ul>
+        </div>
+        <div class="pf-card">
+          <div class="pf-num">Pitfall 6</div>
+          <h3>Cliché openings and overused phrases</h3>
+          <p>"When I was a child I became interested in science…" "I am passionate about…" By application 50 of 100, these openers all sound alike. Strong openings are specific, distinctive, and show — not tell.</p>
+          <ul><li>Avoid the "passion" word entirely — demonstrate it instead</li><li>Avoid childhood stargazing and grandparent illness stories</li><li>Start with something specific to <em>you</em></li></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MEHARRY ADVANTAGE -->
+<section class="adv" id="advantage">
+  <div class="wrap">
+    <div class="lbl">Why Meharry</div>
+    <h2 class="sh">The Meharry Advantage</h2>
+    <p class="sub">Meharry students have a distinctively powerful Broader Impacts story that most applicants cannot tell. NSF explicitly values the full participation of underrepresented groups — and your education, mission, and research context speak directly to that.</p>
+    <div class="pil-grid">
+      <div class="pil">
+        <div class="pil-ico">&#127973;</div>
+        <h3>Health Equity Research</h3>
+        <p>Work in health disparities, cardiometabolic disease, AI-driven diagnostics, federated learning for underserved populations, or privacy-preserving ML maps directly to NSF's Broader Impacts criteria for improving individual well-being and advancing underrepresented communities in STEM.</p>
+      </div>
+      <div class="pil">
+        <div class="pil-ico">&#127891;</div>
+        <h3>HBCU Legacy and STEM Diversity</h3>
+        <p>As a student at one of the nation's foremost HBCUs, your academic environment is itself evidence of commitment to STEM diversity. Frame your plans to mentor, recruit, or create pathways for future scientists of color — and ground those plans in your own experience navigating these paths.</p>
+      </div>
+      <div class="pil">
+        <div class="pil-ico">&#129309;</div>
+        <h3>Community-Centered Science</h3>
+        <p>Meharry's founding mission is service to underserved communities. Whether your work touches healthcare access, data privacy for vulnerable populations, or computational tools for equitable outcomes — this is an authentic and powerful Broader Impacts narrative that connects to NSF's values.</p>
+      </div>
+    </div>
+    <div class="adv-q">
+      NSF values: "full participation of women, persons with disabilities, and underrepresented minorities in science, technology, engineering, and mathematics (STEM)." Your presence at Meharry, your community connections, your research context, and your concrete plans for equitable impact make an exceptionally strong Broader Impacts section. <strong>This is not incidental to your application — it is a central strength. Build your narrative around it deliberately.</strong>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="bg-fog" id="timeline">
+  <div class="wrap">
+    <div class="lbl">Month-by-Month Plan</div>
+    <h2 class="sh">Your 2026 Application Timeline</h2>
+    <p class="sub">With October deadlines, August is already late. Start now. Reference letters are due October 16 — before most application deadlines.</p>
+    <div class="tl">
+      <div class="tl-row">
+        <div class="tl-dt">Jun &ndash; Jul</div>
+        <div class="tl-dot"></div>
+        <div class="tl-box">
+          <div class="tl-tag act">Research</div>
+          <h3>Read the solicitation and build your strategy</h3>
+          <p>Read the current NSF GRFP solicitation cover-to-cover. Identify your primary field and confirm your eligibility. Browse Alex Lang's essay examples and the grfphelp.github.io 2026 collection. Decide whether to apply this cycle.</p>
+        </div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-dt">Early August</div>
+        <div class="tl-dot gld"></div>
+        <div class="tl-box hi">
+          <div class="tl-tag act">Critical</div>
+          <h3>Request letters of reference — do this first</h3>
+          <p><strong>Letters are due October 16 — before your application deadline.</strong> Identify 4 writers (to guarantee 3 submit). Speak to each in person. Provide your research summary, draft essays as they develop, and a brief note on what you'd like each letter to address. Faculty are busy — request early and follow up.</p>
+        </div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-dt">August</div>
+        <div class="tl-dot gld"></div>
+        <div class="tl-box hi">
+          <div class="tl-tag act">Draft</div>
+          <h3>First drafts of both essays</h3>
+          <p>Write first drafts of both the Personal Statement and Research Plan. Don't wait to have the "perfect" story — start, and refine. Write your Broader Impacts sections now, not at the end. Outline your narrative arc before writing full paragraphs.</p>
+        </div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-dt">September</div>
+        <div class="tl-dot"></div>
+        <div class="tl-box">
+          <div class="tl-tag act">Revise</div>
+          <h3>Intensive revision cycles — aim for 3 to 4</h3>
+          <p>Share with your advisor, lab colleagues, and the Meharry writing center. Ask non-scientists to read your research plan — if they can't follow it, your jargon is too heavy. Verify both essays have explicit IM and BI headers. Run the 5-point checklist against both essays for both criteria.</p>
+        </div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-dt">Oct 10 &ndash; 14</div>
+        <div class="tl-dot gld"></div>
+        <div class="tl-box hi">
+          <div class="tl-tag dl">Heads-up</div>
+          <h3>Final polish and letter writer reminder</h3>
+          <p>Send a polite reminder to all letter writers — letters are due October 16. Finalize your application in the NSF portal. Confirm all supplemental materials (transcripts, etc.) are uploaded. Do a final read against the solicitation's formatting requirements.</p>
+        </div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-dt">Oct 16</div>
+        <div class="tl-dot red"></div>
+        <div class="tl-box">
+          <div class="tl-tag sub">Letter Deadline</div>
+          <h3>Reference letters due — 8:00 PM Eastern</h3>
+          <p>All reference letters must be submitted by 8:00 PM ET. This is before your application deadline for most fields. Confirm each writer has submitted. Missing even one letter can disqualify your application.</p>
+        </div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-dt">Oct 19 &ndash; 23</div>
+        <div class="tl-dot red"></div>
+        <div class="tl-box">
+          <div class="tl-tag sub">Application Deadline</div>
+          <h3>Submit your application — 48 hours early</h3>
+          <p>Submit at least two days before your field's deadline — NSF portals receive heavy traffic and can be slow. Confirm submission receipt in your email. Your specific deadline: Life Sciences Oct 19 &bull; CS/Materials/Psych Oct 20 &bull; Engineering Oct 22 &bull; Chem/Geo/Math/Physics Oct 23.</p>
+        </div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-dt">April 2027</div>
+        <div class="tl-dot"></div>
+        <div class="tl-box">
+          <div class="tl-tag act">Results</div>
+          <h3>Award announcements — read your reviewer comments</h3>
+          <p>NSF notifies applicants of award, honorable mention, or non-select. Regardless of outcome, <strong>download your reviewer comments from the GRFP portal.</strong> They are detailed and invaluable for your development as a scientist and for any future applications.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESOURCES -->
+<section id="resources">
+  <div class="wrap">
+    <div class="lbl">Go Deeper</div>
+    <h2 class="sh">Recommended Resources</h2>
+    <p class="sub">The five sources that built this guide — plus additional links for essays, community, and current applicant discussions.</p>
+    <div class="res-grid">
+      <a href="https://www.nsf.gov/funding/initiatives/grfp" target="_blank" class="res">
+        <div class="res-tag">Official</div>
+        <h3>NSF GRFP Official Page</h3>
+        <p>2026 deadlines by field, fellowship benefits, solicitation link, eligibility questionnaire, and contact for program directors. Start here.</p>
+      </a>
+      <a href="https://www.alexhunterlang.com/nsf-fellowship" target="_blank" class="res">
+        <div class="res-tag">Examples</div>
+        <h3>Alex Lang's GRFP Guide</h3>
+        <p>Hundreds of successful essays sortable by year, field, and outcome. Includes reviewer score sheets, panelist guides, and detailed writing advice from a GRFP fellow and VP of Technology at Unlearn.AI.</p>
+      </a>
+      <a href="https://grfphelp.github.io/" target="_blank" class="res">
+        <div class="res-tag">2026 Examples</div>
+        <h3>GRFP Help (grfphelp.github.io)</h3>
+        <p>The most current collection — 20 winning essays from the 2026 application cycle, sourced directly from winners. Updated September 2026.</p>
+      </a>
+      <a href="http://www.loganpearcescience.com/resources/GRFP_common_feedback.pdf" target="_blank" class="res">
+        <div class="res-tag">Writing Craft</div>
+        <h3>Logan Pearce's Common Feedback</h3>
+        <p>A consultant's compiled feedback from hundreds of GRFP reviews. The Writing Craft tab in this guide is drawn heavily from this resource.</p>
+      </a>
+      <a href="https://clairemckaybowen.com/fellowship/" target="_blank" class="res">
+        <div class="res-tag">Comprehensive</div>
+        <h3>Claire McKay Bowen's Fellowship Guide</h3>
+        <p>A 2015 GRFP fellow who reviewed hundreds of applications at Notre Dame. Detailed advice, example intros, annotated essay excerpts, and reviewer comment examples.</p>
+      </a>
+      <a href="https://www.research.gov/grfp/AwardeeList.do?method=loadAwardeeList" target="_blank" class="res">
+        <div class="res-tag">Research</div>
+        <h3>NSF GRFP Awardee List</h3>
+        <p>Search past winners by field, institution, and year via NSF's Research.gov portal. Many winners share their essays — a polite email is common and often successful.</p>
+      </a>
+      <a href="https://www.alexhunterlang.com/nsf-fellowship" target="_blank" class="res">
+        <div class="res-tag">Essay Bank</div>
+        <h3>Alex Lang's Essay Spreadsheet</h3>
+        <p>Linked from Alex Lang's page: a sortable table of hundreds of successful essays organized by field, year, and award level — the most comprehensive essay database available.</p>
+      </a>
+      <a href="https://forum.thegradcafe.com/" target="_blank" class="res">
+        <div class="res-tag">Community</div>
+        <h3>The GradCafe Forums</h3>
+        <p>Real-time discussion from current applicants. Find the active 2026–2027 GRFP thread for draft-swap partners, advice, and result announcements.</p>
+      </a>
+      <a href="https://www.nsf.gov/funding/opportunities/grfp-nsf-graduate-research-fellowship-program" target="_blank" class="res">
+        <div class="res-tag">Required Reading</div>
+        <h3>2026/2027 NSF Solicitation</h3>
+        <p>The authoritative source for eligibility, fields, deadlines, formatting requirements, and review criteria. Read this at least twice before starting your essays.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- GET HELP -->
+<section class="bg-navy" id="help">
+  <div class="wrap">
+    <div class="lbl">Support at Meharry</div>
+    <h2 class="sh">You Don't Have to Do This Alone</h2>
+    <p class="sub">SACS faculty, Meharry's writing support services, and your peer network are all here to help. Use them early.</p>
+    <div class="ct-grid">
+      <div class="ct-card">
+        <h3>SACS Faculty Advising</h3>
+        <p>Faculty in the School of Applied Computational Sciences can help you develop your research proposal, identify appropriate NSF fields of study, and review your essays — especially for CS, data science, AI/ML, federated learning, and cybersecurity proposals. Don't wait for a formal appointment — ask at office hours.<br><br>
+        <a href="https://www.mmc.edu/academics/school-of-applied-computational-sciences/" target="_blank">mmc.edu/academics/sacs &#8599;</a></p>
+      </div>
+      <div class="ct-card">
+        <h3>Writing and Academic Support</h3>
+        <p>Meharry offers writing support services for graduate students. Book an appointment by September — not October. A writing consultant who is not a scientist is actually ideal for your essays: if they can't follow your research proposal, your jargon is too heavy.<br><br>
+        Ask your graduate program coordinator for the current writing support contact.</p>
+      </div>
+      <div class="ct-card">
+        <h3>Office of Research</h3>
+        <p>Meharry's Office of Research can help you identify research mentors with active NSF-funded work, navigate institutional requirements in your application, and connect you with collaborators whose names can strengthen your proposal's feasibility argument.<br><br>
+        <a href="https://www.mmc.edu/research/" target="_blank">mmc.edu/research &#8599;</a></p>
+      </div>
+      <div class="ct-card">
+        <h3>Peer Draft Exchange</h3>
+        <p>One of the highest-value actions you can take: a draft exchange with another current GRFP applicant. Ask your advisor for introductions, post in the GradCafe forum, or find applicants in adjacent departments. Reading someone else's application teaches you as much as getting feedback on your own.<br><br>
+        <em>Also ask non-scientist friends and family to read both essays — especially the research plan.</em></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Meharry Medical College &mdash; School of Applied Computational Sciences &nbsp;&bull;&nbsp; Not affiliated with the National Science Foundation &nbsp;&bull;&nbsp; <a href="https://www.nsf.gov/funding/initiatives/grfp" target="_blank">Official NSF GRFP &#8599;</a></p>
+  <p style="margin-top:.4rem">Built from five sources: <a href="https://www.nsf.gov/funding/initiatives/grfp" target="_blank">NSF.gov</a> &bull; <a href="https://www.alexhunterlang.com/nsf-fellowship" target="_blank">Alex Lang</a> &bull; <a href="https://grfphelp.github.io/" target="_blank">grfphelp.github.io</a> &bull; <a href="http://www.loganpearcescience.com/resources/GRFP_common_feedback.pdf" target="_blank">Logan Pearce</a> &bull; <a href="https://clairemckaybowen.com/fellowship/" target="_blank">Claire McKay Bowen</a></p>
+</footer>
+
+<script>
+function tab(id, btn) {
+  document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
+</body>
+</html>
